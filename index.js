@@ -11,7 +11,7 @@ import libraryRoutes from './routes/library.js';
 
 dotenv.config();
 
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5000;
 
 // Connection à la base de données MongoDB Atlas
 mongoose.connect(process.env.CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
