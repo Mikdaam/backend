@@ -4,7 +4,7 @@ import User from '../model/user.js';
 import { createLibrary } from './library.js';
 
 /**
- * 
+ * Crée un nouvel utilisateur dans la base
  * @param {*} req 
  * @param {*} res 
  * @returns 
@@ -23,7 +23,7 @@ export const signup = async (req, res) => {
 
         const user = User.create({username, password: hashedPassword});
 
-        await createLibrary(username);
+        await createLibrary(username); // Crée une librarie pour l'utilisateur
 
         res.status(201).json({message: 'User created with success!!'});
     } catch (error) {
@@ -32,7 +32,8 @@ export const signup = async (req, res) => {
 };
 
 /**
- * 
+ * Connecte l'utilisateur et lui attribut un token qui a une durée
+ * d'expiration d'une heure
  * @param {*} req 
  * @param {*} res 
  * @returns 
