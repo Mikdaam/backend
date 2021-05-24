@@ -1,17 +1,18 @@
 import express from 'express';
+import auth from '../middleware/auth.js';
 import { getAllVideos, addVideo, updateVideo, deleteVideo } from '../controllers/library.js';
 const router = express.Router();
 
 // route pour récupérer tous les éléments de la bibliothèque
-router.get('/library/:username', getAllVideos);
+router.get('/:username', auth, getAllVideos);
 
 // route pour ajouter une video dans la bibliothèque
-router.post('/library/:username', addVideo);
+router.post('/:username', auth, addVideo);
 
 // route pour modifier le titre d'une video de la bibliothèque
-router.patch('/library/:username/video/:id', updateVideo);
+router.patch('/:username/video/:id', auth, updateVideo);
 
 // route pour supprimer une video de la bibliothèque
-router.delete('/library/:username/video/:id', deleteVideo);
+router.delete('/:username/video/:id', auth, deleteVideo);
 
 export default router;

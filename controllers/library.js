@@ -1,6 +1,23 @@
 import Library from '../model/library.js';
 
 /**
+ * Créer une librarie à la création du compte
+ * @param {string} username 
+ */
+export const createLibrary = async (username) => {
+    try {
+        const library = new Library({
+            name: username,
+            videos: []
+        });
+        await library.save();
+    } catch (error) {
+        console.log('An error occured');
+        console.log(error);
+    }
+};
+
+/**
  * Récupère la librarie corresepondant au 'username' dans la base
  * Et le renvoi sous forme d'objet JSON
  * @param {*} req 

@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 
 // Import des routes à utiliser
 import libraryRoutes from './routes/library.js';
+import userRoutes from './routes/user.js';
 
 //******************************A commenter, obligatoirement 😡😡😡😡😡😡😡 ****** */
 
@@ -38,7 +39,8 @@ app.get('/', (req, res) => {
     res.send(`Server is working!!`);
 });
 
-app.use('/api', libraryRoutes);
+app.use('/api/library', libraryRoutes);
+app.use('/api/user', userRoutes);
 
 const server = createServer(app);
 
